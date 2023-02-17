@@ -7,18 +7,6 @@ const upperCase = (val) => {
 }
 
 exports.activate = function(context) {
-  // vscode.window.showInformationMessage('hello, ppz')
-
-	// let disposable = vscode.commands.registerCommand('extension.helloWorld', function() {
-  //   // 在编辑器右下角展示一个message box
-  //   vscode.window.showInformationMessage('Hello World!');
-	// 	fs.writeFile('./test11.js', 'asdfadf', (err) => {
-	// 		console.log(err)
-	// 	})
-  // });
-
-	// context.subscriptions.push(disposable)
-
 
 	// 注册命令
 	context.subscriptions.push(vscode.commands.registerCommand('extension.readFiles', function (uri) {
@@ -41,11 +29,12 @@ exports.activate = function(context) {
 		})
 
 		console.log('components', components);
+		// 生成文件中的js代码
 		let res = "import '@vue/runtime-core'\r\n"
 		res += '\r\n'
 		components.forEach((item, index) => {
 			console.log('forEach', item)
-			res += `import Crf${upperCase(item)} from "./dist/types/src/packages/${item}/crf-${item}.vue";\r\n`
+			res += `import Crf${upperCase(item)} from "${baseImportUrl}/${item}/crf-${item}.vue";\r\n`
 			if (index === components.length - 1) {
 				res += '\r\n'
 			}
@@ -63,7 +52,7 @@ exports.activate = function(context) {
 		console.log('res', res)
 		const genFilePath = path.split(vscode.workspace.name)[0] + vscode.workspace.name + '/global.d.ts'
 		fs.writeFileSync(genFilePath, res)
-
+		vscode.window.showInformationMessage('生成成功！');
 
 	}));
 }

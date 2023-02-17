@@ -1,34 +1,39 @@
 {
   "name": "vsc-gen-global-types",
-	"version": "0.0.4",
-	"engines": {
-		"vscode": "^1.47.3"
-	},
-	"icon": "images/icon.png",
-	"activationEvents": [
-		"onStartupFinished"
-	],
-	"publisher": "zyx28",
-	"repository": {
-		"url": "https://github.com/DBcooper28/vsc-gen-global-types"
-	},
-	"license": "MIT",
-	"main": "./extension.js",
-	"contributes": {
+  "version": "0.0.5",
+  "engines": {
+    "vscode": "^1.47.3"
+  },
+  "icon": "images/icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "publisher": "zyx28",
+  "repository": {
+    "url": "https://github.com/DBcooper28/vsc-gen-global-types"
+  },
+  "license": "MIT",
+  "main": "./extension.js",
+  "contributes": {
     "commands": [
-			{
+      {
         "command": "extension.readFiles",
-				"title": "生成类型声明文件global"
+        "title": "生成类型声明文件global"
       }
     ],
-		"menus": {
-			"explorer/context": [
-				{
-						"command": "extension.readFiles",
-						"group": "navigation"
-				}
-			]
-		}
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.readFiles",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+	"scripts": {
+		"build:asar": "asar pack ./node_modules ./dist/node_modules.asar"
+  },
+  "devDependencies": {
+    "asar": "^3.2.0"
   }
-
 }
