@@ -8,6 +8,11 @@
 		"onCommand:extension.helloWorld",
 		"onStartupFinished"
 	],
+	"publisher": "zyx28",
+	"repository": {
+		"url": "https://github.com/DBcooper28/vsc-gen-global-types"
+	},
+	"license": "MIT",
 	"main": "./extension.js",
 	"contributes": {
     "commands": [
@@ -17,7 +22,7 @@
       },
 			{
         "command": "extension.readFiles",
-				"title": "读取文件名"
+				"title": "生成类型声明文件global"
       }
     ],
 		"menus": {
@@ -35,7 +40,7 @@
 			],
 			"explorer/context": [
 				{
-						"command": "extension.demo.getCurrentFilePath",
+						"command": "extension.readFiles",
 						"group": "navigation"
 				}
 			]
