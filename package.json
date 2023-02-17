@@ -1,0 +1,45 @@
+{
+  "name": "vsc-plugin-demo",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.47.3"
+	},
+	"activationEvents": [
+		"onCommand:extension.helloWorld",
+		"onStartupFinished"
+	],
+	"main": "./extension.js",
+	"contributes": {
+    "commands": [
+      {
+        "command": "extension.helloWorld",
+				"title": "Hello World2"
+      },
+			{
+        "command": "extension.readFiles",
+				"title": "读取文件名"
+      }
+    ],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "extension.readFiles",
+					"group": "navigation"
+				},
+				{
+					"when": "editorFocus",
+					"command": "extension.helloWorld",
+					"group": "navigation"
+				}
+			],
+			"explorer/context": [
+				{
+						"command": "extension.demo.getCurrentFilePath",
+						"group": "navigation"
+				}
+			]
+		}
+  }
+
+}
